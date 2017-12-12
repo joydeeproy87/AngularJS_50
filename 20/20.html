@@ -7,12 +7,10 @@
 	<script>
 		var countryApp = angular.module('countryApp', []);
 
-		countryApp.controller('countryCtrl', function ($scope) {
-			$scope.countries = [
-				{"name": "China", "population": 1359821000},
-				{"name": "India", "population": 1205625000},
-				{"name": "USA","population": 312247000}
-			];
+		countryApp.controller('countryCtrl', function ($scope, $http) {
+			$http.get('countries.json').success(function (data) {
+				console.log(data);
+			})
 		});
 	</script>
 </head>

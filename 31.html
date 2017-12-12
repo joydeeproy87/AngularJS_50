@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="countryApp">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS Example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+	<script>
+		var countryApp = angular.module('countryApp', []);
+
+		countryApp.controller('countryCtrl', [ '$scope', '$http', function(scope, http){
+	
+			var countryUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/30.countries.json';
+			
+			http
+				.get(countryUrl)
+				.success(function (data) {
+					scope.countries = data;
+				});
+
+		}]);
+	</script>
+</head>
+<body ng-controller="countryCtrl">
+	Search: <input ng-model="searchCountry" type="search"><br><br>
+	<table cellpadding="5">
+		<tr>
+			<th>Flag</th>
+			<th>Country</th>
+			<th>Capital</th>
+			<th>Population</th>
+			<th>GDP</th>
+		</tr>
+		<tr ng-repeat="country in countries">
+			<td><img ng-src="{{ country.flagURL }}" alt="{{ country.name }}" width="50"></td>
+			<td>{{ country.name }}</td>
+			<td>{{ country.capital }}</td>
+			<td>{{ country.population | number }}</td>
+			<td>{{ country.gdp | currency }}</td>
+		</tr>
+	</table>
+</body>
+</html>

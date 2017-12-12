@@ -17,8 +17,6 @@
 					scope.countries = data;
 				});
 
-			scope.sortField = 'population';
-			scope.reverse = true;
 		}]);
 	</script>
 </head>
@@ -26,12 +24,14 @@
 	Search: <input ng-model="searchCountry" type="search"><br><br>
 	<table cellpadding="5">
 		<tr>
-			<th><a href="" ng-click="sortField = 'name'; reverse = !reverse">Country</a></th>
-			<th><a href="" ng-click="sortField = 'population'; reverse = !reverse">Population</a></th>
+			<th>Country</th>
+			<th>Population</th>
+			<th>Flag</th>
 		</tr>
-		<tr ng-repeat="country in countries | filter: searchCountry | orderBy: sortField: reverse">
+		<tr ng-repeat="country in countries">
 			<td>{{ country.name }}</td>
 			<td>{{ country.population | number }}</td>
+			<td><img src="{{ country.flagURL }}" alt="{{ country.name }}"></td>
 		</tr>
 	</table>
 </body>

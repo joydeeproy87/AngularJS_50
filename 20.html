@@ -8,7 +8,7 @@
 		var countryApp = angular.module('countryApp', []);
 
 		countryApp.controller('countryCtrl', function ($scope, $http) {
-			$http.get('countries.json').success(function (data) {
+			$http.get('https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/20/countries.json').success(function (data) {
 				console.log(data);
 			})
 		});

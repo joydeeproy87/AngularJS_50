@@ -7,16 +7,17 @@
 	<script>
 		var countryApp = angular.module('countryApp', []);
 
-		// https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/20.countries.json
-		countryApp.controller('countryCtrl', function($scope, $http){
+		countryApp.controller('countryCtrl', [ '$scope', '$http', function(scope, http){
 	
-			$http
-				.get('https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/20.countries.json')
+			var url = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/20.countries.json';
+			
+			http
+				.get(url)
 				.success(function (data) {
-					$scope.countries = data;
+					scope.countries = data;
 				});
 	
-		});
+		}]);
 	</script>
 </head>
 <body ng-controller="countryCtrl">

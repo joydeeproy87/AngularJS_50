@@ -12,11 +12,11 @@
 			// console.log($routeProvider);
 			$routeProvider
 				.when('/', {
-					templateUrl: 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/country-list.html',
+					templateUrl: 'country-list.html',
 					controller: 'countryListCtrl'
 				})
 				.when('/:countryName', {
-					templateUrl: 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/country-detail.html',
+					templateUrl: 'country-detail.html',
 					controller: 'countryDetailCtrl'
 				})
 				.otherwise({
@@ -25,7 +25,7 @@
 		});
 
 		countryApp.controller('countryListCtrl', function($scope, $http){
-			var countryUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/30.countries.json';
+			var countryUrl = '30.countries.json';
 
 			$http
 				.get(countryUrl)

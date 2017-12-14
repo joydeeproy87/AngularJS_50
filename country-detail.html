@@ -1,1 +1,7 @@
-<h1>{{name}}</h1>
+<h1>{{country.name}}</h1>
+<ul>
+	<li>population: {{country.population | number}}</li>
+	<li><img ng-src="{{country.flagURL}}" alt="{{country.name}}" width="100" /></li>
+	<li>capital: {{country.capital}}</li>
+	<li>gdp: {{country.gdp | currency:'₹'}}</li>
+</ul>

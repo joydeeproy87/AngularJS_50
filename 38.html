@@ -25,18 +25,27 @@
 		}]);
 
 		countryApp.controller('countryListCtrl', function($scope, $http){
-			var countryUrl = '30.countries.json';
 
 			$http
-				.get(countryUrl)
+				.get('30.countries.json')
 				.success(function (data) {
 					$scope.countries = data;
 				});
 
 		});
 
-		countryApp.controller('countryDetailCtrl', function ($scope, $routeParams) {
+		countryApp.controller('countryDetailCtrl', function ($scope, $routeParams, $http) {
 			$scope.name = $routeParams.countryName;
+
+			$http
+				.get('30.countries.json')
+				.success(function (data) {
+					var country = data.filter(function(entry) {
+						return entry.name === $scope.name;
+					})[0];
+
+					// console.log(country);
+				})
 		});
 	</script>
 </head>

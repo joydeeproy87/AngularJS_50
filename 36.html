@@ -36,7 +36,7 @@
 		});
 
 		countryApp.controller('countryDetailCtrl', function ($scope, $routeParams) {
-			console.log($routeParams);
+			$scope.name = $routeParams.countryName;
 		});
 	</script>
 </head>

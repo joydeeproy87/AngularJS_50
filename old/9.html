@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body ng-app>
+	First Name: <input ng-model="fname" type="text"><br>
+	Last Name: <input ng-model="lname" type="text"><br>
+	{{ fname || '\'first name\'' }} {{ lname || '\'last name\'' }}
+</body>
+</html>

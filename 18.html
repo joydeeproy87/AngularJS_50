@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="countryApp">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+   <script src="angular.js"></script>
+   <script>
+      var nameApp = angular.module('nameApp', []);
+      nameApp.controller('nameCtrl', function ($scope) {
+         $scope.names = ['Chuck', 'Brisket', 'Shank', 'Rib', 'Plate', 'Flank', 'Short Loin', 'Tenderloin', 'Sirloin', 'Round'];
+
+         $scope.addName = function () {
+            $scope.names.push($scope.enteredName);
+            $scope.enteredName = '';
+         };
+
+         $scope.removeName = function (name) {
+            var i = $scope.names.indexOf(name);
+            $scope.names.splice(i, 1);
+         };
+      });
+   </script>
+</head>
+
+<body ng-controller="CountryCtrl">
+   <ol>
+      <li ng-repeat="name in names">{{name}}
+         <a href="" ng-click="removeName(name)" style="color: #FF0000">-x-</a>
+      </li>
+   </ol>
+   <form ng-submit="addName()">
+      <input type="text" ng-model="enteredName">
+      <input type="submit" value="Add">
+   </form>
+</body>
+
+</html>

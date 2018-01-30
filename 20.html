@@ -6,17 +6,6 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
 	 crossorigin="anonymous">
-	<script src="angular.js"></script>
-	<script>
-		var countryApp = angular.module('countryApp', []);
-		countryApp.controller('CountryCtrl', function ($scope) {
-			$scope.countries = [
-				{ "name": "China", "population": 1359821000 },
-				{ "name": "India", "population": 1205625000 },
-				{ "name": "United States of America", "population": 312247000 }
-			];
-		});
-	</script>
 </head>
 
 <body ng-controller="CountryCtrl">
@@ -30,6 +19,18 @@
 			<td>{{country.population | number}}</td>
 		</tr>
 	</table>
+
+	<script src="angular.js"></script>
+	<script>
+		var countryApp = angular.module('countryApp', []);
+		countryApp.controller('CountryCtrl', function ($scope) {
+			$scope.countries = [
+				{ "name": "China", "population": 1359821000 },
+				{ "name": "India", "population": 1205625000 },
+				{ "name": "United States of America", "population": 312247000 }
+			];
+		});
+	</script>
 </body>
 
 </html>

@@ -8,8 +8,16 @@
    <script>
       var nameApp = angular.module('nameApp', []);
       nameApp.controller('nameCtrl', function ($scope) {
-         $scope.fname = 'agent';
-         $scope.lname = '47';
+         $scope.fname = 'John';
+
+         $scope.$watch('lname', function(newValue, oldValue) {
+            console.log(`the new value is ${newValue}`);
+         });
+
+         setTimeout(function(){
+            $scope.lname = 'Doe';
+            $scope.$apply();
+         }, 1000);
       });
    </script>
 </head>

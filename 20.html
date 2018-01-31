@@ -8,10 +8,13 @@
 	 crossorigin="anonymous">
 	<script src="angular.js"></script>
 	<script>
-		var countryApp = angular.module('countryApp', []);
+		const url = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
+
+		let countryApp = angular.module('countryApp', []);
+
 		countryApp.controller('CountryCtrl', function ($scope, $http) {
-			$http.get('countries.json').success(function (data) {
-				console.log(444);
+			$http.get(url).success(function (data) {
+				$scope.countries = data;
 			});
 		});
 	</script>

@@ -3,7 +3,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>23. Sorting in ng-repeat using orderBy</title>
+   <title>24. Sorting in descending order</title>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
    <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
    <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
@@ -39,7 +39,7 @@
                </tr>
             </thead>
             <tbody>
-               <tr ng-repeat="country in countries | filter: searchQuery | orderBy: 'population'">
+               <tr ng-repeat="country in countries | filter: searchQuery | orderBy: '-population'">
                   <td>{{country.name}}</td>
                   <td>{{country.population | number}}</td>
                </tr>

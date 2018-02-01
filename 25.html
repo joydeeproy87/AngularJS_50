@@ -3,7 +3,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>23. Sorting in ng-repeat using orderBy</title>
+   <title>25. Sorting table columns interactively</title>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
    <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
    <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
@@ -19,6 +19,7 @@
          http.get(resourceUrl).success(function (data) {
             scope.countries = data;
          });
+         scope.sortField = 'population';
       }]);
    </script>
 </head>
@@ -34,12 +35,12 @@
          <table>
             <thead>
                <tr>
-                  <th>Country</th>
-                  <th>Population</th>
+                  <th><a href="" ng-click="sortField = 'name'">Country</a></th>
+                  <th><a href="" ng-click="sortField = 'population'">Population</a></th>
                </tr>
             </thead>
             <tbody>
-               <tr ng-repeat="country in countries | filter: searchQuery | orderBy: 'population'">
+               <tr ng-repeat="country in countries | filter:searchQuery | orderBy:sortField">
                   <td>{{country.name}}</td>
                   <td>{{country.population | number}}</td>
                </tr>

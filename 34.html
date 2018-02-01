@@ -2,34 +2,35 @@
 <html lang="en" ng-app="countryApp">
 
 <head>
-   <meta charset="UTF-8">
-   <title>34. Getting started with routing using ngRoute</title>
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-   <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-   <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>34. Getting started with routing using ngRoute</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
 </head>
 
 <body ng-controller="CountryListCtrl">
-   <div class="container">
+	<div class="container">
 
-      <div class="row">
-         <ol>
-            <li ng-repeat="country in countries">{{country.name}}</li>
-         </ol>
-      </div>
+		<div class="row">
+			<ol>
+				<li ng-repeat="country in countries">{{country.name}}</li>
+			</ol>
+		</div>
 
-   </div>
+	</div>
 
-   <script src="angular.min.js"></script>
-   <script src="angular-route.min.js"></script>
-   <script>
-      const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries_2.json';
+	<script src="angular.min.js"></script>
+	<script src="angular-route.min.js"></script>
+	<script>
+		const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries_2.json';
 
-      // module definition
-      let countryApp = angular.module('countryApp', ['ngRoute']);
+		// module definition
+		let countryApp = angular.module('countryApp', ['ngRoute']);
 
-      // controller definition
-   </script>
+		// controller definition
+	</script>
 </body>
 
 </html>

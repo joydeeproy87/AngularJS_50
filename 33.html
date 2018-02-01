@@ -7,6 +7,19 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
    <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
    <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body ng-controller="CountryListCtrl">
+   <div class="container">
+
+      <div class="row">
+         <ol>
+            <li ng-repeat="country in countries">{{country.name}}</li>
+         </ol>
+      </div>
+
+   </div>
+
    <script src="angular.js"></script>
    <script>
       const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries_2.json';
@@ -15,45 +28,12 @@
       let countryApp = angular.module('countryApp', []);
 
       // controller definition
-      countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http) {
+      countryApp.controller('CountryListCtrl', ['$scope', '$http', function (scope, http) {
          http.get(resourceUrl).success(function (data) {
             scope.countries = data;
          });
       }]);
    </script>
-</head>
-
-<body ng-controller="CountryCtrl">
-   <div class="container">
-
-      <div class="row">
-         <table>
-            <thead>
-               <tr>
-                  <th>Country</th>
-                  <th>Capital</th>
-                  <th>Population</th>
-                  <th>
-                     <a href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)">GDP (PPP)</a>
-                  </th>
-                  <th>Flag</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr ng-repeat="country in countries">
-                  <td>{{country.name}}</td>
-                  <td>{{country.capital}}</td>
-                  <td>{{country.population | number}}</td>
-                  <td>{{country.gdp | currency}}</td>
-                  <td>
-                     <img ng-src="{{country.flagURL}}" alt="{{country.name}}" width="100">
-                  </td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-
-   </div>
 </body>
 
 </html>

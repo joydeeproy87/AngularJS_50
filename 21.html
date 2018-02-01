@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="countryApp">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+      crossorigin="anonymous">
+   <script src="angular.js"></script>
+   <script>
+      const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
+
+      // module definition
+      let countryApp = angular.module('countryApp', []);
+
+      // controller definition
+      countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http) {
+         http.get(resourceUrl).success(function (data) {
+            scope.countries = data;
+         });
+      }]);
+   </script>
+</head>
+
+<body ng-controller="CountryCtrl">
+   <table class="pure-table pure-table-bordered">
+      <tr>
+         <td>Country</td>
+         <td>Population</td>
+      </tr>
+      <tr ng-repeat="country in countries">
+         <td>{{country.name}}</td>
+         <td>{{country.population | number}}</td>
+      </tr>
+   </table>
+</body>
+
+</html>

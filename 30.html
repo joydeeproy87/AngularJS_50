@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="countryApp">
+
+<head>
+	<meta charset="UTF-8">
+	<title>30. Adding GDP data</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+	<script src="angular.js"></script>
+	<script>
+		const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries_2.json';
+
+		// module definition
+		let countryApp = angular.module('countryApp', []);
+
+		// controller definition
+		countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http) {
+			http.get(resourceUrl).success(function (data) {
+				scope.countries = data;
+			});
+		}]);
+	</script>
+</head>
+
+<body ng-controller="CountryCtrl">
+	<div class="container">
+
+		<div class="row">
+			<table>
+				<thead>
+					<tr>
+						<th>Country</th>
+						<th>Capital</th>
+						<th>Population</th>
+						<th>GDP (PPP)</th>
+						<th>Flag</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="country in countries">
+						<td>{{country.name}}</td>
+						<td>{{country.capital}}</td>
+						<td>{{country.population | number}}</td>
+						<td>{{country.gdp}}</td>
+						<td>
+							<img ng-src="{{country.flagURL}}" alt="{{country.name}}" width="100">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</body>
+
+</html>

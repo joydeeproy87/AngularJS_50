@@ -2,18 +2,21 @@
 		"name": "China",
 		"capital": "Beijing",
 		"population": 1359821000,
-		"flagURL": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg"
+		"flagURL": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+		"gdp": 12261
 	},
 	{
 		"name": "India",
 		"capital": "New Delhi",
 		"population": 1205625000,
-		"flagURL": "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
+		"flagURL": "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+		"gdp": 4716
 	},
 	{
 		"name": "United States of America",
 		"capital": "Washington, D.C.",
 		"population": 312247000,
-		"flagURL": "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+		"flagURL": "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+		"gdp": 16244
 	}
 ]

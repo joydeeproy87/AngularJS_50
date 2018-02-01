@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>34. Getting started with routing using ngRoute</title>
+	<title>35. Moving templates for routes into separate files</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 	<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 	<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
@@ -25,18 +25,10 @@
 		// route definitions
 		countryApp.config(function ($routeProvider) {
 			$routeProvider.when('/', {
-				template: `
-					<div class="container">
-						<div class="row">
-							<ol>
-								<li ng-repeat="country in countries">{{country.name}}</li>
-							</ol>
-						</div>
-					</div>
-				`,
+				templateUrl: 'country-list.html',
 				controller: 'CountryListCtrl'
 			}).when('/:countryName', {
-				template: `<h1>create TODO list here</h1>`,
+				templateUrl: 'country-detail.html',
 				controller: 'countryDetailCtrl'
 			}).otherwise({
 				redirectTo: '/'

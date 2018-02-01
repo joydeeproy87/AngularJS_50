@@ -31,6 +31,7 @@
             <thead>
                <tr>
                   <th>Country</th>
+                  <th>Capital</th>
                   <th>Population</th>
                   <th>Flag</th>
                </tr>
@@ -38,6 +39,7 @@
             <tbody>
                <tr ng-repeat="country in countries">
                   <td>{{country.name}}</td>
+                  <td>{{country.capital}}</td>
                   <td>{{country.population | number}}</td>
                   <td>
                      <img ng-src="{{country.flagURL}}" alt="{{country.name}}" width="100">

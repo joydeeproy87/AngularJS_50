@@ -7,22 +7,6 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
    <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
    <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-   <script src="angular.js"></script>
-   <script>
-      const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
-
-      // module definition
-      let countryApp = angular.module('countryApp', []);
-
-      // controller definition
-      countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http) {
-         http.get(resourceUrl).success(function (data) {
-            scope.countries = data;
-         });
-         scope.sortField = 'population';
-         scope.reverse = true;
-      }]);
-   </script>
 </head>
 
 <body ng-controller="CountryCtrl">
@@ -54,6 +38,23 @@
       </div>
 
    </div>
+
+   <script src="angular.js"></script>
+   <script>
+      const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
+
+      // module definition
+      let countryApp = angular.module('countryApp', []);
+
+      // controller definition
+      countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http) {
+         http.get(resourceUrl).success(function (data) {
+            scope.countries = data;
+         });
+         scope.sortField = 'population';
+         scope.reverse = true;
+      }]);
+   </script>
 </body>
 
 </html>

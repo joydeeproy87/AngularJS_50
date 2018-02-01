@@ -7,6 +7,38 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
    <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
    <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body ng-controller="CountryCtrl">
+   <div class="container">
+
+      <div class="row">
+         <input type="text" ng-model="searchQuery" placeholder="Search Countries">
+      </div>
+
+      <div class="row">
+         <table>
+            <thead>
+               <tr>
+                  <th>
+                     <a href="" ng-click="sortField = 'name'">Country</a>
+                  </th>
+                  <th>
+                     <a href="" ng-click="sortField = 'population'">Population</a>
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr ng-repeat="country in countries | filter:searchQuery | orderBy:sortField">
+                  <td>{{country.name}}</td>
+                  <td>{{country.population | number}}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+
+   </div>
+
    <script src="angular.js"></script>
    <script>
       const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
@@ -22,33 +54,6 @@
          scope.sortField = 'population';
       }]);
    </script>
-</head>
-
-<body ng-controller="CountryCtrl">
-   <div class="container">
-
-      <div class="row">
-         <input type="text" ng-model="searchQuery" placeholder="Search Countries">
-      </div>
-
-      <div class="row">
-         <table>
-            <thead>
-               <tr>
-                  <th><a href="" ng-click="sortField = 'name'">Country</a></th>
-                  <th><a href="" ng-click="sortField = 'population'">Population</a></th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr ng-repeat="country in countries | filter:searchQuery | orderBy:sortField">
-                  <td>{{country.name}}</td>
-                  <td>{{country.population | number}}</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-
-   </div>
 </body>
 
 </html>

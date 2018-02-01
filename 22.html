@@ -6,20 +6,6 @@
    <title>Document</title>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous">
-   <script src="angular.js"></script>
-   <script>
-      const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
-
-      // module definition
-      let countryApp = angular.module('countryApp', []);
-
-      // controller definition
-      countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http) {
-         http.get(resourceUrl).success(function (data) {
-            scope.countries = data;
-         });
-      }]);
-   </script>
 </head>
 
 <body ng-controller="CountryCtrl">
@@ -35,6 +21,21 @@
          <td>{{country.population | number}}</td>
       </tr>
    </table>
+
+   <script src="angular.js"></script>
+   <script>
+      const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
+
+      // module definition
+      let countryApp = angular.module('countryApp', []);
+
+      // controller definition
+      countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http) {
+         http.get(resourceUrl).success(function (data) {
+            scope.countries = data;
+         });
+      }]);
+   </script>
 </body>
 
 </html>

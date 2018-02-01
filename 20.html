@@ -5,19 +5,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
-	 crossorigin="anonymous">
-	<script src="angular.js"></script>
-	<script>
-		const url = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
-
-		let countryApp = angular.module('countryApp', []);
-
-		countryApp.controller('CountryCtrl', function ($scope, $http) {
-			$http.get(url).success(function (data) {
-				$scope.countries = data;
-			});
-		});
-	</script>
+	   crossorigin="anonymous">
 </head>
 
 <body ng-controller="CountryCtrl">
@@ -31,6 +19,19 @@
 			<td>{{country.population | number}}</td>
 		</tr>
 	</table>
+
+	<script src="angular.js"></script>
+	<script>
+		const url = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries.json';
+
+		let countryApp = angular.module('countryApp', []);
+
+		countryApp.controller('CountryCtrl', function ($scope, $http) {
+			$http.get(url).success(function (data) {
+				$scope.countries = data;
+			});
+		});
+	</script>
 </body>
 
 </html>

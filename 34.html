@@ -3,7 +3,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>33. Preparing for routing - making a simple country listing</title>
+   <title>34. Getting started with routing using ngRoute</title>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
    <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
    <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
@@ -21,18 +21,14 @@
    </div>
 
    <script src="angular.js"></script>
+   <script src="angular-route.min.js"></script>
    <script>
       const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries_2.json';
 
       // module definition
-      let countryApp = angular.module('countryApp', []);
+      let countryApp = angular.module('countryApp', ['ngRoute']);
 
       // controller definition
-      countryApp.controller('CountryListCtrl', ['$scope', '$http', function (scope, http) {
-         http.get(resourceUrl).success(function (data) {
-            scope.countries = data;
-         });
-      }]);
    </script>
 </body>
 

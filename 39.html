@@ -29,7 +29,7 @@
 				controller: 'CountryListCtrl'
 			}).when('/:countryName', {
 				templateUrl: 'country-detail.html',
-				controller: 'countryDetailCtrl'
+				controller: 'CountryDetailCtrl'
 			}).otherwise({
 				redirectTo: '/'
 			});
@@ -44,13 +44,12 @@
 		}]);
 
 		// countryDetailCtrl
-		countryApp.controller('countryDetailCtrl', ['$scope', '$routeParams', '$http', function (scope, routeParams, http) {
+		countryApp.controller('CountryDetailCtrl', ['$scope', '$routeParams', '$http', function (scope, routeParams, http) {
 			scope.name = routeParams.countryName;
 			http.get(resourceUrl).success(function (data) {
-				var country = data.filter(function (entry) {
+				scope.country = data.filter(function (entry) {
 					return entry.name === scope.name;
 				})[0];
-				console.log(country);
 			});
 		}]);
 	</script>

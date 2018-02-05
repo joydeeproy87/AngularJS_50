@@ -29,7 +29,7 @@
 				controller: 'CountryListCtrl'
 			}).when('/:countryName', {
 				templateUrl: 'country-detail.html',
-				controller: 'CountryDetailCtrl'
+				controller: 'countryDetailCtrl'
 			}).otherwise({
 				redirectTo: '/'
 			});
@@ -44,7 +44,7 @@
 		}]);
 
 		// countryDetailCtrl
-		countryApp.controller('CountryDetailCtrl', ['$scope', '$routeParams', '$http', function (scope, routeParams, http) {
+		countryApp.controller('countryDetailCtrl', ['$scope', '$routeParams', '$http', function (scope, routeParams, http) {
 			scope.name = routeParams.countryName;
 			http.get(resourceUrl).success(function (data) {
 				scope.country = data.filter(function (entry) {

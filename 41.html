@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="countryApp">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>41. Creating a service for loading the list of countries</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body ng-controller="CountryListCtrl">
+	<br>
+	<div ng-view></div>
+
+	<script src="angular.min.js"></script>
+	<script src="angular-route.min.js"></script>
+	<script>
+		const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries_2.json';
+
+		// module definition
+		let countryApp = angular.module('countryApp', ['ngRoute']);
+
+		// route definitions
+		countryApp.config(function ($routeProvider) {
+			$routeProvider.when('/', {
+				templateUrl: 'country-list.html',
+				controller: 'CountryListCtrl'
+			}).when('/:countryName', {
+				templateUrl: 'country-detail.html',
+				controller: 'countryDetailCtrl'
+			}).otherwise({
+				redirectTo: '/'
+			});
+		});
+
+		// creating a service
+		countryApp.factory('countries', ['$http', function (http) {
+			return {
+				list: function (callback) {
+					http.get(resourceUrl).success(callback);
+				}
+			};
+		}]);
+
+		// controller definitions
+		// CountryListCtrl
+		countryApp.controller('CountryListCtrl', ['$scope', '$http', 'countries', function (scope, http, countries) {
+			countries.list(function (countries) {
+				scope.countries = countries;
+			});
+		}]);
+
+		// countryDetailCtrl
+		countryApp.controller('countryDetailCtrl', ['$scope', '$routeParams', '$http', function (scope, routeParams, http) {
+			scope.name = routeParams.countryName;
+			// fetching JSON data again
+			http.get(resourceUrl).success(function (data) {
+				scope.country = data.filter(function (entry) {
+					return entry.name === scope.name;
+				})[0];
+			});
+		}]);
+	</script>
+</body>
+
+</html>

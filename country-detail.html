@@ -1,14 +1,40 @@
-<h1>{{name}}</h1>
 <div class="container">
-   <div class="row">
-      <ul>
-         <li>Capital: {{country.capital}}</li>
-         <li>Population: {{country.population | number}}</li>
-         <li>GDP: {{country.gdp | currency}}</li>
-         <li>Flag:
-            <br>
-            <img ng-src="{{country.flagURL}}" alt="{{name}}" width="200">
-         </li>
-      </ul>
-   </div>
+	<div class="row">
+		<h1>{{name}}</h1>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<table>
+			<thead>
+				<tr>
+					<th>Capital</th>
+					<th>Population</th>
+					<th>GDP</th>
+					<th>Flag</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="country in countries">
+					<td>{{country.capital}}</td>
+					<td>{{country.population | number}}</td>
+					<td>{{country.gdp | currency}}</td>
+					<td>
+						<img ng-src="{{country.flagURL}}" alt="{{name}}" width="200">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- <ul>
+			<li>Capital: {{country.capital}}</li>
+			<li>Population: {{country.population | number}}</li>
+			<li>GDP: {{country.gdp | currency}}</li>
+			<li>Flag:
+				<br>
+				<img ng-src="{{country.flagURL}}" alt="{{name}}" width="200">
+			</li>
+		</ul> -->
+	</div>
 </div>

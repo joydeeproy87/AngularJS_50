@@ -35,12 +35,20 @@
 			});
 		});
 
+		// creating a service
+		countryApp.factory('countries', ['$http', function (http) {
+			return {
+				list: function (callback) {
+					http.get(resourceUrl).success(callback);
+				}
+			};
+		}]);
+
 		// controller definitions
 		// CountryListCtrl
-		countryApp.controller('CountryListCtrl', ['$scope', '$http', function (scope, http) {
-			// fetching JSON data
-			http.get(resourceUrl).success(function (data) {
-				scope.countries = data;
+		countryApp.controller('CountryListCtrl', ['$scope', '$http', 'countries', function (scope, http, countries) {
+			countries.list(function (countries) {
+				scope.countries = countries;
 			});
 		}]);
 

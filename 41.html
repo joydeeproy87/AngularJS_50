@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>41. Creating a service for loading the list of countries</title>
+	<title>41. Extracting the country details query into a service</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 	<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 	<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
@@ -20,7 +20,7 @@
 		const resourceUrl = 'https://raw.githubusercontent.com/joydeeproy87/AngularJS_50/master/countries_2.json';
 
 		// module definition
-		let countryApp = angular.module('countryApp', ['ngRoute']);
+		const countryApp = angular.module('countryApp', ['ngRoute']);
 
 		// route definitions
 		countryApp.config(function ($routeProvider) {
@@ -36,30 +36,37 @@
 		});
 
 		// creating a service
+		// caching data using service named 'countries'
 		countryApp.factory('countries', ['$http', function (http) {
 			return {
 				list: function (callback) {
 					http.get(resourceUrl).success(callback);
+				},
+				find: function (name, callback) {
+					http.get(resourceUrl).success(function (data) {
+						let country = data.filter(function (entry) {
+							return entry.name === name;
+						})[0];
+						callback(country);
+					});
 				}
 			};
 		}]);
 
 		// controller definitions
 		// CountryListCtrl
-		countryApp.controller('CountryListCtrl', ['$scope', '$http', 'countries', function (scope, http, countries) {
+		countryApp.controller('CountryListCtrl', ['$scope', 'countries', function (scope, countries) {
 			countries.list(function (countries) {
 				scope.countries = countries;
 			});
 		}]);
 
 		// countryDetailCtrl
-		countryApp.controller('countryDetailCtrl', ['$scope', '$routeParams', '$http', function (scope, routeParams, http) {
-			scope.name = routeParams.countryName;
-			// fetching JSON data again
-			http.get(resourceUrl).success(function (data) {
-				scope.country = data.filter(function (entry) {
-					return entry.name === scope.name;
-				})[0];
+		countryApp.controller('countryDetailCtrl', ['$scope', '$routeParams', 'countries', function (scope, routeParams,
+			countries) {
+			// console.log(routeParams.countryName, countries);
+			countries.find(routeParams.countryName, function (country) {
+				scope.country = country;
 			});
 		}]);
 	</script>

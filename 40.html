@@ -46,7 +46,7 @@
 
 		// controller definitions
 		// CountryListCtrl
-		countryApp.controller('CountryListCtrl', ['$scope', '$http', 'countries', function (scope, http, countries) {
+		countryApp.controller('CountryListCtrl', ['$scope', 'countries', function (scope, countries) {
 			countries.list(function (countries) {
 				scope.countries = countries;
 			});

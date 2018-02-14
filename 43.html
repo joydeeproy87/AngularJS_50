@@ -39,18 +39,13 @@
 		// caching data using service named 'countries'
 		countryApp.factory('countries', ['$http', function (http) {
 
-			// defining cachedData variable
-			let cachedData;
-
+			// redefiing getData function using $http method
 			function getData(callback) {
-				if (cachedData) {
-					callback(cachedData);
-				} else {
-					http.get(resourceUrl).success(function (data) {
-						cachedData = data;
-						callback(data);
-					});
-				}
+				http({
+					method: 'GET',
+					url: resourceUrl,
+					cache: true
+				}).success(callback);
 			}
 			return {
 				list: getData,

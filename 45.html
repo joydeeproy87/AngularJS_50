@@ -38,16 +38,14 @@
 		// creating a service
 		// caching data using service named 'countries'
 		countryApp.factory('countries', ['$http', function (http) {
-			// getData function using '$http' method
-			function getData(callback) {
-				http({
-					method: 'GET',
-					url: resourceUrl,
-					cache: true
-				}).success(callback);
-			}
 			return {
-				list: getData,
+				list: function (callback) {
+					http({
+						method: 'GET',
+						url: resourceUrl,
+						cache: true
+					}).success(callback);
+				},
 				find: function (name, callback) {
 					getData(function (data) {
 						let country = data.filter(function (entry) {

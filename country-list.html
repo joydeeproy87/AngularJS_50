@@ -2,7 +2,7 @@
    <div class="row">
       <ol>
          <li ng-repeat="country in countries">
-            <a href="#/{{country.name}}">{{country.name}}</a>
+            <a href="#/{{country.name | encodeURI}}">{{country.name}}</a>
          </li>
       </ol>
    </div>

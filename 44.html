@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>43. Caching JSON using cache option</title>
+	<title>44. Creating a custom filter to encode URIs</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 	<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 	<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
@@ -74,6 +74,10 @@
 				scope.country = country;
 			});
 		}]);
+
+		countryApp.filter('encodeURI', function () {
+			return window.encodeURI;
+		});
 	</script>
 </body>
 
